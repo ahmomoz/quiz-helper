@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: #f0f0f0;
+}
+
+.tracking-tighter {
+  letter-spacing: -0.05em;
+}
+
+/* 讓選中的文字也有酷炫效果 */
+::selection {
+  background: #22d3ee;
+  color: black;
+}
