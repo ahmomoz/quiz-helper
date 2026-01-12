@@ -26,9 +26,7 @@ export const QuestionCard = ({
 }: QuestionCardProps) => {
   return (
     <BentoCard title={data.category} variant="default">
-      <h2 className="text-2xl md:text-3xl font-black leading-tight mb-8">
-        {data.question}
-      </h2>
+      <h2 className="text-2xl md:text-3xl font-black leading-tight mb-8">{data.question}</h2>
 
       <div className="space-y-4">
         {data.options.map((option, idx) => (
@@ -71,11 +69,7 @@ export const QuestionCard = ({
             {UI_TEXT.quiz.confirm}
           </NeoButton>
         ) : (
-          <NeoButton
-            onClick={onNext}
-            variant="secondary"
-            className="w-full md:w-auto"
-          >
+          <NeoButton onClick={onNext} variant="secondary" className="w-full md:w-auto">
             {UI_TEXT.quiz.next} <ChevronRight size={20} />
           </NeoButton>
         )}

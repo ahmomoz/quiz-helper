@@ -1,8 +1,11 @@
 # codebase-structure Specification
 
 ## Purpose
+
 TBD - created by archiving change refactor-architecture. Update Purpose after archive.
+
 ## Requirements
+
 ### Requirement: Modular Architecture
 
 The application MUST be structured into distinct modules for Layout, Features (Quiz), and UI components.
@@ -30,4 +33,3 @@ Static text content displayed in the UI MUST be manageable from a central locati
 - GIVEN a static text string (e.g., "REACT SENIOR DEV") needs changing
 - WHEN the developer updates the constant in `src/constants/`
 - THEN the change is reflected in the UI without modifying component code.
-

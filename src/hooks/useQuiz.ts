@@ -13,7 +13,7 @@ export interface UseQuizReturn {
   isWrong: boolean;
   score: number;
   quizStatus: QuizStatus;
-  
+
   // Actions
   selectOption: (index: number) => void;
   confirmAnswer: () => void;
@@ -31,15 +31,18 @@ export const useQuiz = (): UseQuizReturn => {
 
   const currentQuestion = QUIZ_DATA[currentIdx];
 
-  const selectOption = useCallback((index: number) => {
-    if (isRevealed) return;
-    setSelectedOption(index);
-    setIsWrong(false);
-  }, [isRevealed]);
+  const selectOption = useCallback(
+    (index: number) => {
+      if (isRevealed) return;
+      setSelectedOption(index);
+      setIsWrong(false);
+    },
+    [isRevealed],
+  );
 
   const confirmAnswer = useCallback(() => {
     if (selectedOption === null) return;
-    
+
     if (selectedOption === currentQuestion.answer) {
       setIsRevealed(true);
       setScore((prev) => prev + 1);

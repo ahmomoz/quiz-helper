@@ -23,9 +23,7 @@ export const QuizPage = () => {
   } = useQuiz();
 
   if (quizStatus === 'completed') {
-    return (
-      <ResultView score={score} totalQuestions={totalQuestions} onRestart={restartQuiz} />
-    );
+    return <ResultView score={score} totalQuestions={totalQuestions} onRestart={restartQuiz} />;
   }
 
   return (
