@@ -1,14 +1,30 @@
 import React from 'react';
 import { cn } from '@/utils/cn';
 
+type CardVariant = 'default' | 'primary' | 'secondary' | 'accent' | 'success' | 'info';
+
 interface BentoCardProps {
   children: React.ReactNode;
-  color?: string; // Optional override
+  variant?: CardVariant;
   className?: string;
   title?: string;
 }
 
-export const BentoCard: React.FC<BentoCardProps> = ({ children, color, className = '', title }) => {
+const VARIANT_STYLES: Record<CardVariant, string> = {
+  default: 'bg-theme-surface',
+  primary: 'bg-theme-primary',
+  secondary: 'bg-theme-secondary',
+  accent: 'bg-theme-accent',
+  success: 'bg-green-200',
+  info: 'bg-purple-400',
+};
+
+export const BentoCard: React.FC<BentoCardProps> = ({
+  children,
+  variant = 'default',
+  className = '',
+  title,
+}) => {
   return (
     <div
       className={cn(
@@ -17,7 +33,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({ children, color, className
       shadow-[8px_8px_0px_0px_var(--color-border)] 
       p-6 
       text-theme-text
-      ${color ? color : 'bg-theme-surface'}
+      ${VARIANT_STYLES[variant]}
     `,
         className,
       )}

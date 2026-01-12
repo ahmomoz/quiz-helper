@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({ currentIdx, totalQuestions }) =>
         <div className="self-end">
           <ThemeSelector />
         </div>
-        <BentoCard color="bg-theme-accent" className="w-full md:w-64 py-4 px-6">
+        <BentoCard variant="accent" className="w-full md:w-64 py-4 px-6">
           <div className="flex items-center justify-between">
             <span className="font-black">{UI_TEXT.header.progress}</span>
             <span className="font-black text-2xl">

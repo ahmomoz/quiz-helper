@@ -6,13 +6,10 @@ TBD - created by archiving change setup-github-actions. Update Purpose after arc
 ### Requirement: Automated Verification
 The system MUST automatically verify code quality on every change.
 
-#### Scenario: Pushing Code
--   GIVEN a developer pushes code to the repository
--   WHEN the commit is received by GitHub
--   THEN a CI workflow is triggered
--   AND dependencies are installed
--   AND the linter checks for code style issues
--   AND the project is built to ensure no compilation errors.
+#### Scenario: Case Sensitivity Check
+-   GIVEN the codebase contains file imports
+-   WHEN the CI pipeline runs on a Linux environment
+-   THEN it MUST successfully resolve all modules regardless of the developer's local filesystem case sensitivity.
 
 ### Requirement: Automated Deployment
 The system MUST automatically deploy the latest version of the application to the hosting environment.

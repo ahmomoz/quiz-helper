@@ -1,14 +1,23 @@
 import React from 'react';
 import { cn } from '@/utils/cn';
 
+type ButtonVariant = 'primary' | 'secondary' | 'accent' | 'danger';
+
 interface NeoButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  color?: string; // Optional override, defaults to primary
+  variant?: ButtonVariant;
 }
+
+const VARIANT_STYLES: Record<ButtonVariant, string> = {
+  primary: 'bg-theme-primary',
+  secondary: 'bg-theme-secondary',
+  accent: 'bg-theme-accent',
+  danger: 'bg-red-400 text-black',
+};
 
 export const NeoButton: React.FC<NeoButtonProps> = ({
   children,
   onClick,
-  color,
+  variant = 'primary',
   disabled = false,
   className = '',
   ...props
@@ -26,7 +35,7 @@ export const NeoButton: React.FC<NeoButtonProps> = ({
         transition-all duration-75 flex items-center justify-center gap-2
         disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer
         text-theme-text
-        ${color ? color : 'bg-theme-primary'}
+        ${VARIANT_STYLES[variant]}
       `,
         className,
       )}
