@@ -110,4 +110,104 @@ export const QUIZ_DATA: QuizQuestion[] = [
       '生產環境 Vite 使用 Rollup 進行優化打包',
     ],
   },
+  {
+    id: 6,
+    category: '組件通訊',
+    question: 'React 中父子組件如何進行通訊？',
+    options: [
+      '父傳子透過 props，子傳父透過 callback function',
+      '只能透過 Redux 或 Context 進行通訊',
+      '父組件可以直接讀取子組件的 state',
+      '子組件可以直接修改父組件的 props',
+    ],
+    answer: 0,
+    hint: '提示：思考『單向資料流 (One-way Data Flow)』。',
+    explanation:
+      'React 遵循單向資料流。父組件透過 props 將資料傳遞給子組件；若子組件需要與父組件溝通（例如更新狀態），父組件需將一個 callback function 作為 prop 傳給子組件，子組件呼叫該 function 來觸發父組件的更新。',
+    reviewPoints: [
+      'Props 是唯讀的 (Read-only)',
+      '狀態提升 (Lifting State Up) 解決兄弟組件通訊',
+      'Context 解決跨多層級通訊 (Prop Drilling)',
+    ],
+  },
+  {
+    id: 7,
+    category: 'DOM 操作',
+    question: 'useRef (或 createRef) 的主要用途是什麼？',
+    options: [
+      '用來取代 useState 進行畫面渲染',
+      '用來直接操作 DOM 元素或儲存不觸發渲染的可變值 (Mutable Value)',
+      '用來定義全域變數',
+      '用來快取 API 回傳的結果以避免重新請求',
+    ],
+    answer: 1,
+    hint: '提示：思考『非受控組件 (Uncontrolled Components)』或『保持數值但不渲染』。',
+    explanation:
+      'Refs 提供了一種訪問 DOM 節點或 React 元素的方式。此外，useRef 也常用於儲存一個可變的值（如計時器 ID、前一次的 props），修改 .current 屬性不會觸發組件重新渲染。',
+    reviewPoints: [
+      'useRef 修改 .current 不會觸發 Re-render',
+      '常用於聚焦 (Focus)、媒體播放控制',
+      'forwardRef 用於轉發 Ref 給子組件',
+    ],
+  },
+  {
+    id: 8,
+    category: '效能優化',
+    question: '什麼是 React 中的 Code Splitting (代碼拆分)？',
+    options: [
+      '將 CSS 和 JavaScript 分開寫在不同檔案',
+      '將所有程式碼壓縮成一行以減少體積',
+      '將程式碼拆分成多個小包 (Bundles)，讓使用者只需下載當前頁面所需的程式碼',
+      '將後端程式碼與前端程式碼分開部署',
+    ],
+    answer: 2,
+    hint: '提示：關鍵字是 React.lazy 和 Suspense。',
+    explanation:
+      'Code Splitting 是現代前端打包工具（如 Webpack, Vite）支援的特性。透過動態 import() 語法，可以將應用程式拆分成多個 chunk，實現『懶加載 (Lazy Loading)』，大幅減少首屏載入時間 (First Contentful Paint)。',
+    reviewPoints: [
+      'React.lazy() 實現動態引入組件',
+      'Suspense 處理載入中的 Loading 狀態',
+      '路由層級 (Route-based) 拆分是最常見的策略',
+    ],
+  },
+  {
+    id: 9,
+    category: '進階模式',
+    question: '什麼是高階組件 (Higher-Order Component, HOC)？',
+    options: [
+      '一個返回 JSX 的普通組件',
+      '一個接收組件作為參數並返回新組件的函式',
+      'React 內建的最高優先級組件',
+      '只能在 Class Component 中使用的特殊方法',
+    ],
+    answer: 1,
+    hint: '提示：類似於 JavaScript 的高階函式 (Higher-Order Function)。',
+    explanation:
+      'HOC 是 React 中用於重用組件邏輯的一種進階技巧。它不是 React API 的一部分，而是基於 React 組合特性的一種設計模式。例如 React.memo、connect (Redux) 都是 HOC 的應用。',
+    reviewPoints: [
+      'HOC 是純函式，不修改原組件',
+      '用於橫切關注點 (Cross-cutting Concerns) 如權限驗證',
+      'Hooks (如 useHover) 通常比 HOC 更易讀',
+    ],
+  },
+  {
+    id: 10,
+    category: '狀態管理',
+    question: '什麼時候應該使用 useReducer 而不是 useState？',
+    options: [
+      '當狀態邏輯簡單且獨立時',
+      '當需要處理複雜的狀態邏輯，或下一個狀態依賴於前一個狀態時',
+      '只有在 Class Component 中才需要用 useReducer',
+      'useReducer 效能比 useState 差，應該盡量避免使用',
+    ],
+    answer: 1,
+    hint: '提示：思考 Redux 的 reducer 模式。',
+    explanation:
+      'useReducer 是 useState 的替代方案。當 state 邏輯較複雜（包含多個子數值），或者下一個 state 依賴於之前的 state 時，useReducer 更加適用。它也讓你能將狀態更新邏輯從組件中分離出來，便於測試。',
+    reviewPoints: [
+      '適合複雜狀態邏輯或狀態間有依賴關係',
+      '透過 dispatch action 觸發更新',
+      '是實作 Context + Reducer 模式的基礎',
+    ],
+  },
 ];
