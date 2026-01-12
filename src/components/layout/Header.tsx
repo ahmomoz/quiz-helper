@@ -1,7 +1,7 @@
 import React from 'react';
-import { ThemeSelector } from '@/components/Theme/ThemeSelector';
+import { ThemeSelector } from '@/components/theme/ThemeSelector';
 import { BentoCard } from '@/components/ui/BentoCard';
-import { UI_TEXT } from '@/constants/text';
+import { UI_TEXT } from '@/constants/printText';
 
 interface HeaderProps {
   currentIdx: number;
@@ -36,7 +36,9 @@ export const Header: React.FC<HeaderProps> = ({ currentIdx, totalQuestions }) =>
           <div className="w-full h-4 border-[2px] border-theme-border mt-2 bg-theme-surface">
             <div
               className="h-full bg-theme-text transition-all duration-500"
-              style={{ width: `${((currentIdx + 1) / totalQuestions) * 100}%` }}
+              style={{
+                width: `${((currentIdx + 1) / totalQuestions) * 100}%`,
+              }}
             ></div>
           </div>
         </BentoCard>

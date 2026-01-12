@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Settings, X } from 'lucide-react';
-import { useTheme } from '@/context/ThemeContext';
+import { useTheme } from '@/hooks/useTheme';
 import { THEMES } from '@/styles/themes';
 import { NeoButton } from '@/components/ui/NeoButton';
 import { BentoCard } from '@/components/ui/BentoCard';
@@ -52,15 +52,21 @@ export const ThemeSelector: React.FC = () => {
                   <div className="flex gap-1">
                     <div
                       className="w-3 h-3 rounded-full border border-black"
-                      style={{ backgroundColor: t.colors.primary }}
+                      style={{
+                        backgroundColor: t.colors.primary,
+                      }}
                     />
                     <div
                       className="w-3 h-3 rounded-full border border-black"
-                      style={{ backgroundColor: t.colors.secondary }}
+                      style={{
+                        backgroundColor: t.colors.secondary,
+                      }}
                     />
                     <div
                       className="w-3 h-3 rounded-full border border-black"
-                      style={{ backgroundColor: t.colors.accent }}
+                      style={{
+                        backgroundColor: t.colors.accent,
+                      }}
                     />
                   </div>
                   <span>{t.name}</span>

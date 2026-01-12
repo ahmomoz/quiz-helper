@@ -41,6 +41,9 @@ body {
 .bg-theme-surface {
   background-color: var(--color-surface);
 }
+.bg-theme-border {
+  background-color: var(--color-border);
+}
 .text-theme-text {
   color: var(--color-text);
 }

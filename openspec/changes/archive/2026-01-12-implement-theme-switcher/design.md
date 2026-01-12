@@ -47,17 +47,32 @@ const THEMES: Theme[] = [
   {
     id: 'default',
     name: 'Neo Pop',
-    colors: { primary: '#FACC15', secondary: '#22D3EE', accent: '#F472B6', background: '#F0F0F0' },
+    colors: {
+      primary: '#FACC15',
+      secondary: '#22D3EE',
+      accent: '#F472B6',
+      background: '#F0F0F0',
+    },
   },
   {
     id: 'cyber',
     name: 'Cyberpunk',
-    colors: { primary: '#FCEE0A', secondary: '#00F0FF', accent: '#FF003C', background: '#0d0d0d' }, // Darker bg
+    colors: {
+      primary: '#FCEE0A',
+      secondary: '#00F0FF',
+      accent: '#FF003C',
+      background: '#0d0d0d',
+    }, // Darker bg
   },
   {
     id: 'retro',
     name: 'Retro',
-    colors: { primary: '#FCA311', secondary: '#14213D', accent: '#E5E5E5', background: '#FFFFFF' },
+    colors: {
+      primary: '#FCA311',
+      secondary: '#14213D',
+      accent: '#E5E5E5',
+      background: '#FFFFFF',
+    },
   },
 ];
 ```

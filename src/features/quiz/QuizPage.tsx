@@ -16,7 +16,7 @@ import { BentoCard } from '@/components/ui/BentoCard';
 import { cn } from '@/utils/cn';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { UI_TEXT } from '@/constants/text';
+import { UI_TEXT } from '@/constants/printText';
 
 export const QuizPage = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -171,7 +171,7 @@ export const QuizPage = () => {
                   <Terminal size={14} />
                   <span>{UI_TEXT.quiz.logFile}</span>
                 </div>
-                {`// 重點回顧：\n// 1. ${currentQ.category} 核心考點\n// 2. 確保了解術語的台灣慣用譯名\n// 3. 面試時建議舉出實際專案範例`}
+                {`// 重點回顧：\n${currentQ.reviewPoints.map((point, idx) => `// ${idx + 1}. ${point}`).join('\n')}`}
               </div>
             </BentoCard>
           )}

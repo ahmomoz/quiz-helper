@@ -1,5 +1,5 @@
-import { MainLayout } from './components/layout/MainLayout';
-import { QuizPage } from './features/quiz/QuizPage';
+import { MainLayout } from '@/components/layout/MainLayout';
+import { QuizPage } from '@/features/quiz/QuizPage';
 
 function App() {
   return (

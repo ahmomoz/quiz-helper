@@ -1,6 +1,6 @@
 import React from 'react';
 import { NeoButton } from '@/components/ui/NeoButton';
-import { UI_TEXT } from '@/constants/text';
+import { UI_TEXT } from '@/constants/printText';
 
 export const Footer: React.FC = () => {
   return (
@@ -12,12 +12,6 @@ export const Footer: React.FC = () => {
           className="px-3 py-1 text-xs shadow-[2px_2px_0px_0px_var(--color-border)]"
         >
           {UI_TEXT.footer.github}
-        </NeoButton>
-        <NeoButton
-          color="bg-theme-surface"
-          className="px-3 py-1 text-xs shadow-[2px_2px_0px_0px_var(--color-border)]"
-        >
-          {UI_TEXT.footer.portfolio}
         </NeoButton>
       </div>
     </footer>
