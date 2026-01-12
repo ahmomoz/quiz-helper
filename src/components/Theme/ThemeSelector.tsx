@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Settings, X } from 'lucide-react';
-import { useTheme } from '../../context/ThemeContext';
-import { THEMES } from '../../styles/themes';
-import { NeoButton } from '../ui/NeoButton';
-import { BentoCard } from '../ui/BentoCard';
-import { cn } from '../../utils/cn';
+import { useTheme } from '@/context/ThemeContext';
+import { THEMES } from '@/styles/themes';
+import { NeoButton } from '@/components/ui/NeoButton';
+import { BentoCard } from '@/components/ui/BentoCard';
+import { cn } from '@/utils/cn';
 
 export const ThemeSelector: React.FC = () => {
   const { theme, setThemeId } = useTheme();

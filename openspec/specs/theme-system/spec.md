@@ -1,8 +1,11 @@
 # theme-system Specification
 
 ## Purpose
+
 TBD - created by archiving change implement-theme-switcher. Update Purpose after archive.
+
 ## Requirements
+
 ### Requirement: Dynamic Theme Switching
 
 The system MUST allow the user to change the global color scheme of the application.
@@ -47,4 +50,3 @@ The system MUST ensure that theme options are legible regardless of the currentl
 - WHEN the user views the theme menu
 - THEN the selected item MUST be highlighted
 - AND the text color of the selected item MUST contrast with the highlight background color.
-
