@@ -18,7 +18,7 @@ export const QUIZ_DATA: QuizQuestion[] = [
       '它是直接操作瀏覽器的原生 DOM，速度非常快',
       '它是 UI 在記憶體中的輕量表示法，透過 Diffing 演算法找出差異並最小化實際 DOM 的操作',
       '它是一種用於存取資料庫的技術，用於提高數據讀取效率',
-      '它是一種強制組件每秒渲染 60 次的機制',
+      '它是一種強制元件每秒渲染 60 次的機制',
     ],
     answer: 1,
     hint: "提示：思考 'Reconciliation' 和 'Diffing' 過程。",
@@ -53,17 +53,17 @@ export const QUIZ_DATA: QuizQuestion[] = [
   {
     id: 3,
     category: '效能優化',
-    question: '如何減少 React 組件的重複渲染 (Re-rendering)？',
+    question: '如何減少 React 元件的重複渲染 (Re-rendering)？',
     options: [
       '將所有變數都放在 global 範圍',
-      '使用 React.memo 包裹組件，並搭配 useCallback 或 useMemo 來維持屬性引用的一致性',
-      '強制使用 class 組件而不是函式組件',
-      '減少組件的層級，全部寫在同一個檔案中',
+      '使用 React.memo 包裹元件，並搭配 useCallback 或 useMemo 來維持屬性引用的一致性',
+      '強制使用 class 元件而不是函式元件',
+      '減少元件的層級，全部寫在同一個檔案中',
     ],
     answer: 1,
     hint: '提示：思考『引用相等性 (Referential Equality)』。',
     explanation:
-      '當父組件渲染時，子組件預設也會跟著渲染。React.memo 可以快取組件。然而，若 props 包含函式或物件，每次渲染都會產生新的引用，導致 memo 失效。此時需使用 useCallback 定義函式，或 useMemo 計算值，以確保在依賴未變的情況下引用保持不變。',
+      '當父元件渲染時，子元件預設也會跟著渲染。React.memo 可以快取元件。然而，若 props 包含函式或物件，每次渲染都會產生新的引用，導致 memo 失效。此時需使用 useCallback 定義函式，或 useMemo 計算值，以確保在依賴未變的情況下引用保持不變。',
     reviewPoints: [
       'React.memo 透過淺比較 (Shallow Compare) 避免渲染',
       'useCallback 確保函式引用 (Reference) 穩定',
@@ -112,21 +112,21 @@ export const QUIZ_DATA: QuizQuestion[] = [
   },
   {
     id: 6,
-    category: '組件通訊',
-    question: 'React 中父子組件如何進行通訊？',
+    category: '元件通訊',
+    question: 'React 中父子元件如何進行通訊？',
     options: [
       '父傳子透過 props，子傳父透過 callback function',
       '只能透過 Redux 或 Context 進行通訊',
-      '父組件可以直接讀取子組件的 state',
-      '子組件可以直接修改父組件的 props',
+      '父元件可以直接讀取子元件的 state',
+      '子元件可以直接修改父元件的 props',
     ],
     answer: 0,
     hint: '提示：思考『單向資料流 (One-way Data Flow)』。',
     explanation:
-      'React 遵循單向資料流。父組件透過 props 將資料傳遞給子組件；若子組件需要與父組件溝通（例如更新狀態），父組件需將一個 callback function 作為 prop 傳給子組件，子組件呼叫該 function 來觸發父組件的更新。',
+      'React 遵循單向資料流。父元件透過 props 將資料傳遞給子元件；若子元件需要與父元件溝通（例如更新狀態），父元件需將一個 callback function 作為 prop 傳給子元件，子元件呼叫該 function 來觸發父元件的更新。',
     reviewPoints: [
       'Props 是唯讀的 (Read-only)',
-      '狀態提升 (Lifting State Up) 解決兄弟組件通訊',
+      '狀態提升 (Lifting State Up) 解決兄弟元件通訊',
       'Context 解決跨多層級通訊 (Prop Drilling)',
     ],
   },
@@ -141,13 +141,13 @@ export const QUIZ_DATA: QuizQuestion[] = [
       '用來快取 API 回傳的結果以避免重新請求',
     ],
     answer: 1,
-    hint: '提示：思考『非受控組件 (Uncontrolled Components)』或『保持數值但不渲染』。',
+    hint: '提示：思考『非受控元件 (Uncontrolled Components)』或『保持數值但不渲染』。',
     explanation:
-      'Refs 提供了一種訪問 DOM 節點或 React 元素的方式。此外，useRef 也常用於儲存一個可變的值（如計時器 ID、前一次的 props），修改 .current 屬性不會觸發組件重新渲染。',
+      'Refs 提供了一種訪問 DOM 節點或 React 元素的方式。此外，useRef 也常用於儲存一個可變的值（如計時器 ID、前一次的 props），修改 .current 屬性不會觸發元件重新渲染。',
     reviewPoints: [
       'useRef 修改 .current 不會觸發 Re-render',
       '常用於聚焦 (Focus)、媒體播放控制',
-      'forwardRef 用於轉發 Ref 給子組件',
+      'forwardRef 用於轉發 Ref 給子元件',
     ],
   },
   {
@@ -165,7 +165,7 @@ export const QUIZ_DATA: QuizQuestion[] = [
     explanation:
       'Code Splitting 是現代前端打包工具（如 Webpack, Vite）支援的特性。透過動態 import() 語法，可以將應用程式拆分成多個 chunk，實現『懶加載 (Lazy Loading)』，大幅減少首屏載入時間 (First Contentful Paint)。',
     reviewPoints: [
-      'React.lazy() 實現動態引入組件',
+      'React.lazy() 實現動態引入元件',
       'Suspense 處理載入中的 Loading 狀態',
       '路由層級 (Route-based) 拆分是最常見的策略',
     ],
@@ -173,19 +173,19 @@ export const QUIZ_DATA: QuizQuestion[] = [
   {
     id: 9,
     category: '進階模式',
-    question: '什麼是高階組件 (Higher-Order Component, HOC)？',
+    question: '什麼是高階元件 (Higher-Order Component, HOC)？',
     options: [
-      '一個返回 JSX 的普通組件',
-      '一個接收組件作為參數並返回新組件的函式',
-      'React 內建的最高優先級組件',
+      '一個返回 JSX 的普通元件',
+      '一個接收元件作為參數並返回新元件的函式',
+      'React 內建的最高優先級元件',
       '只能在 Class Component 中使用的特殊方法',
     ],
     answer: 1,
     hint: '提示：類似於 JavaScript 的高階函式 (Higher-Order Function)。',
     explanation:
-      'HOC 是 React 中用於重用組件邏輯的一種進階技巧。它不是 React API 的一部分，而是基於 React 組合特性的一種設計模式。例如 React.memo、connect (Redux) 都是 HOC 的應用。',
+      'HOC 是 React 中用於重用元件邏輯的一種進階技巧。它不是 React API 的一部分，而是基於 React 組合特性的一種設計模式。例如 React.memo、connect (Redux) 都是 HOC 的應用。',
     reviewPoints: [
-      'HOC 是純函式，不修改原組件',
+      'HOC 是純函式，不修改原元件',
       '用於橫切關注點 (Cross-cutting Concerns) 如權限驗證',
       'Hooks (如 useHover) 通常比 HOC 更易讀',
     ],
@@ -203,7 +203,7 @@ export const QUIZ_DATA: QuizQuestion[] = [
     answer: 1,
     hint: '提示：思考 Redux 的 reducer 模式。',
     explanation:
-      'useReducer 是 useState 的替代方案。當 state 邏輯較複雜（包含多個子數值），或者下一個 state 依賴於之前的 state 時，useReducer 更加適用。它也讓你能將狀態更新邏輯從組件中分離出來，便於測試。',
+      'useReducer 是 useState 的替代方案。當 state 邏輯較複雜（包含多個子數值），或者下一個 state 依賴於之前的 state 時，useReducer 更加適用。它也讓你能將狀態更新邏輯從元件中分離出來，便於測試。',
     reviewPoints: [
       '適合複雜狀態邏輯或狀態間有依賴關係',
       '透過 dispatch action 觸發更新',
