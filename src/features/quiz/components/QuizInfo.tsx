@@ -1,12 +1,34 @@
-import { Lightbulb, Cpu, Zap } from 'lucide-react';
+import { Lightbulb, Cpu, Zap, Sparkles, Bot } from 'lucide-react';
 import { BentoCard } from '@/components/ui/BentoCard';
 import { UI_TEXT } from '@/constants/printText';
+import { NeoButton } from '@/components/ui/NeoButton';
+import { useState } from 'react';
 
 interface QuizInfoProps {
   hint: string;
+  question: string;
 }
 
-export const QuizInfo = ({ hint }: QuizInfoProps) => {
+export const QuizInfo = ({ hint, question }: QuizInfoProps) => {
+  const [showCopied, setShowCopied] = useState(false);
+
+  const handleAIClick = async (aiType: 'gemini' | 'gpt') => {
+    // 複製題目到剪貼簿
+    try {
+      await navigator.clipboard.writeText(question);
+      setShowCopied(true);
+      setTimeout(() => setShowCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+
+    // 在新標籤頁打開 AI 工具
+    const urls = {
+      gemini: 'https://gemini.google.com/app',
+      gpt: 'https://chat.openai.com/',
+    };
+    window.open(urls[aiType], '_blank');
+  };
   return (
     <div className="space-y-6">
       <BentoCard variant="primary" title={UI_TEXT.quiz.hint}>
@@ -39,6 +61,32 @@ export const QuizInfo = ({ hint }: QuizInfoProps) => {
 
       <BentoCard variant="default" title={UI_TEXT.quiz.interviewTips}>
         <p className="font-bold text-sm leading-relaxed">{UI_TEXT.quiz.tipsContent}</p>
+      </BentoCard>
+
+      <BentoCard variant="accent" title={UI_TEXT.quiz.aiHelpers}>
+        <div className="space-y-3">
+          {showCopied && (
+            <div className="text-sm font-bold text-center py-2 bg-green-400 text-black border-2 border-black animate-pulse">
+              {UI_TEXT.quiz.copiedToClipboard}
+            </div>
+          )}
+          <NeoButton
+            onClick={() => handleAIClick('gemini')}
+            variant="secondary"
+            className="w-full text-sm"
+          >
+            <Sparkles size={18} />
+            {UI_TEXT.quiz.askGemini}
+          </NeoButton>
+          <NeoButton
+            onClick={() => handleAIClick('gpt')}
+            variant="accent"
+            className="w-full text-sm"
+          >
+            <Bot size={18} />
+            {UI_TEXT.quiz.askGPT}
+          </NeoButton>
+        </div>
       </BentoCard>
 
       <div className="grid grid-cols-2 gap-4">

@@ -25,6 +25,10 @@ export const UI_TEXT = {
     quickReact: 'Quick React',
     explanationTitle: '深度解析 (Detailed Explanation)',
     logFile: 'senior-dev-notes.log',
+    aiHelpers: 'AI 助手',
+    askGemini: '問 Gemini',
+    askGPT: '問 ChatGPT',
+    copiedToClipboard: '題目已複製！',
   },
   result: {
     title: '面試訓練完成！',

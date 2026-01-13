@@ -11,6 +11,7 @@ This is an interactive React quiz application designed for senior React develope
 ## Development Commands
 
 ### Essential Commands
+
 ```bash
 pnpm install              # Install dependencies (use --frozen-lockfile in CI)
 pnpm dev                  # Start dev server at http://localhost:5173
@@ -21,6 +22,7 @@ pnpm format               # Format code with Prettier
 ```
 
 ### Path Aliases
+
 - `@/*` maps to `src/*` (configured in tsconfig.json and vite.config.ts via vite-tsconfig-paths)
 
 ## Architecture
@@ -28,6 +30,7 @@ pnpm format               # Format code with Prettier
 ### Application Structure
 
 **Entry Point Flow**:
+
 - `main.tsx` → wraps `<App>` in `<ThemeProvider>` (manages theme state + localStorage persistence)
 - `App.tsx` → wraps `<QuizPage>` in `<MainLayout>` (header + footer structure)
 - `QuizPage.tsx` → uses `useQuiz()` hook to orchestrate quiz state machine
@@ -35,12 +38,14 @@ pnpm format               # Format code with Prettier
 ### Core State Management
 
 **Theme System** (`src/context/ThemeContext.tsx`):
+
 - Provides global theme via Context API
 - Applies CSS custom properties to `:root` dynamically
 - Persists theme selection to `localStorage` with key `quiz-helper-theme`
 - Theme definitions in `src/styles/themes.ts` (Neo Pop, Cyberpunk, Retro, Monochrome)
 
 **Quiz Logic** (`src/hooks/useQuiz.ts`):
+
 - Centralized quiz state machine with 3 statuses: `idle` | `in-progress` | `completed`
 - Manages: current question index, selected option, reveal state, score, wrong answer flag
 - Key states:
@@ -51,43 +56,49 @@ pnpm format               # Format code with Prettier
 ### Data Structure
 
 **Quiz Questions** (`src/data/quizData.ts`):
+
 ```typescript
 interface QuizQuestion {
   id: number;
-  category: string;        // e.g., "基礎觀念", "Hooks", "效能優化"
+  category: string; // e.g., "基礎觀念", "Hooks", "效能優化"
   question: string;
-  options: string[];       // Array of 4 choices
-  answer: number;          // Index of correct option
+  options: string[]; // Array of 4 choices
+  answer: number; // Index of correct option
   hint: string;
-  explanation: string;     // Detailed explanation shown after correct answer
-  reviewPoints: string[];  // Bullet points for "senior-dev-notes.log" style recap
+  explanation: string; // Detailed explanation shown after correct answer
+  reviewPoints: string[]; // Bullet points for "senior-dev-notes.log" style recap
 }
 ```
 
 ### Component Organization
 
 **Features** (`src/features/quiz/`):
+
 - Feature-based organization (quiz is a self-contained feature)
 - `QuizPage.tsx`: Main orchestrator using Bento Grid layout (8-col question + 4-col sidebar on lg)
 - Sub-components: `QuestionCard`, `QuizFeedback`, `QuizInfo`, `ResultView`
 
 **Shared UI** (`src/components/`):
+
 - `layout/`: `MainLayout`, `Header`, `Footer`
 - `ui/`: Reusable Neo-Brutalist styled components (`NeoButton`, `BentoCard`)
 - `theme/`: `ThemeSelector` component
 
 **Utilities** (`src/utils/cn.ts`):
+
 - `cn()` helper combining `clsx` + `tailwind-merge` for className composition
 
 ## Styling Approach
 
 ### Tailwind CSS v4 + CSS Variables
+
 - Uses `@tailwindcss/vite` plugin for Tailwind v4
 - Theme colors injected as CSS variables (`--color-primary`, `--color-secondary`, etc.)
 - Access in Tailwind: `bg-[var(--color-primary)]`
 - Neo-Brutalist style: bold borders, hard shadows, high contrast
 
 ### Theme Switching Flow
+
 1. User selects theme → `ThemeContext.setThemeId()`
 2. `useEffect` in `ThemeProvider` applies CSS variables to `:root`
 3. All components using `var(--color-*)` update automatically
@@ -96,6 +107,7 @@ interface QuizQuestion {
 ## GitHub Actions CI/CD
 
 **Workflow** (`.github/workflows/deploy.yml`):
+
 - Triggers on push to `main` branch
 - Build steps: Install pnpm → lint → build → upload artifact
 - Deploys to GitHub Pages (base path: `/quiz-helper/` configured in vite.config.ts)
@@ -103,14 +115,17 @@ interface QuizQuestion {
 ## Key Patterns
 
 ### Hook-based State Management
+
 - Prefer custom hooks (`useQuiz`, `useTheme`) over component-level state
 - Context API for cross-cutting concerns (theme), not Redux
 
 ### Type Safety
+
 - Strict TypeScript with `strict: true`, `noUnusedLocals`, `noUnusedParameters`
 - Explicit return types on hooks (`UseQuizReturn`)
 
 ### Quiz User Flow
+
 1. User selects option → `selectOption()`
 2. User clicks confirm → `confirmAnswer()`
    - If correct: reveal explanation + increment score
@@ -121,6 +136,7 @@ interface QuizQuestion {
 ## Adding New Quiz Questions
 
 Edit `src/data/quizData.ts`:
+
 1. Add new `QuizQuestion` object to `QUIZ_DATA` array
 2. Follow existing structure (4 options, 0-indexed answer)
 3. Include category, hint, explanation, and reviewPoints
@@ -129,6 +145,7 @@ Edit `src/data/quizData.ts`:
 ## Adding New Themes
 
 Edit `src/styles/themes.ts`:
+
 1. Add new object to `THEMES` array with unique `id`
 2. Define all 7 colors: `primary`, `secondary`, `accent`, `background`, `surface`, `text`, `border`
 3. Theme automatically available in `ThemeSelector` dropdown

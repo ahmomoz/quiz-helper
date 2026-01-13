@@ -55,7 +55,7 @@ export const QuizPage = () => {
 
         {/* Side Info Cards */}
         <div className="lg:col-span-4">
-          <QuizInfo hint={currentQuestion.hint} />
+          <QuizInfo hint={currentQuestion.hint} question={currentQuestion.question} />
         </div>
       </div>
 
