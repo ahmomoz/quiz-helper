@@ -33,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({ currentIdx, totalQuestions }) =>
               {currentIdx + 1} / {totalQuestions}
             </span>
           </div>
-          <div className="w-full h-4 border-[2px] border-theme-border mt-2 bg-theme-surface">
+          <div className="w-full h-4 border-2 border-theme-border mt-2 bg-theme-surface">
             <div
               className="h-full bg-theme-text transition-all duration-500"
               style={{

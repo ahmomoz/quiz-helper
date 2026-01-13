@@ -35,17 +35,17 @@ export const QuestionCard = ({
             onClick={() => onSelectOption(idx)}
             className={cn(
               `
-                w-full text-left p-4 border-[3px] border-theme-border font-bold transition-all cursor-pointer
+                w-full text-left p-4 border-3 border-theme-border font-bold transition-all cursor-pointer
                 text-theme-text
                 ${selectedOption === idx ? 'bg-theme-text text-theme-background translate-x-1 translate-y-1 shadow-none' : 'bg-theme-surface shadow-[4px_4px_0px_0px_var(--color-border)] hover:brightness-95'}
-                ${isRevealed && idx === data.answer ? '!bg-green-400 !text-black !border-green-600' : ''}
-                ${isRevealed && selectedOption === idx && idx !== data.answer ? '!bg-red-400 !text-black' : ''}
+                ${isRevealed && idx === data.answer ? 'bg-green-400! text-black! border-green-600!' : ''}
+                ${isRevealed && selectedOption === idx && idx !== data.answer ? 'bg-red-400! text-black!' : ''}
               `,
             )}
             disabled={isRevealed}
           >
             <div className="flex items-center gap-4">
-              <span className="w-8 h-8 flex-shrink-0 flex items-center justify-center border-[2px] border-current font-black">
+              <span className="w-8 h-8 shrink-0 flex items-center justify-center border-2 border-current font-black">
                 {String.fromCharCode(65 + idx)}
               </span>
               <span>{option}</span>

@@ -29,7 +29,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({
     <div
       className={cn(
         `
-      border-[3px] border-theme-border 
+      border-3 border-theme-border 
       shadow-[8px_8px_0px_0px_var(--color-border)] 
       p-6 
       text-theme-text

@@ -41,7 +41,7 @@ export const ThemeSelector: React.FC = () => {
                     setIsOpen(false);
                   }}
                   className={cn(
-                    'w-full text-left px-3 py-2 border-[2px] border-theme-border font-bold flex items-center gap-3 transition-transform hover:translate-x-1 hover:-translate-y-1',
+                    'w-full text-left px-3 py-2 border-2 border-theme-border font-bold flex items-center gap-3 transition-transform hover:translate-x-1 hover:-translate-y-1',
                     theme.id === t.id ? 'bg-theme-secondary ring-2 ring-black' : 'bg-theme-surface',
                   )}
                   style={{
